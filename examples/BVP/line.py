@@ -1,6 +1,6 @@
 import torch
 import matplotlib.pyplot as plt
-from flamecalc import CalVarSolver
+from flamecalc import BVPSolver
 
 
 def f(y, dy, x):
@@ -12,7 +12,7 @@ if __name__ == '__main__':
     B = (2, 5)
     domain = torch.linspace(A[0], B[0], 100)
 
-    model = CalVarSolver(f, A, B, domain)
+    model = BVPSolver(f, A, B, domain)
     epoch = 2500
     result = model.optimize(lr=0.02, epoch=epoch)
 

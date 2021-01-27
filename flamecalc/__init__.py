@@ -1,4 +1,4 @@
-from flamecalc.flamecalc import CalVarSolver
+from flamecalc.flamecalc import BVPSolver, IVPSolver
 
-__all__ = ["CalVarSolver"]
+__all__ = ["BVPSolver", "IVPSolver"]
 __version__ = "0.1.0"

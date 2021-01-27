@@ -2,7 +2,7 @@ import torch
 from torch.optim import Adam
 import matplotlib.pyplot as plt
 
-from flamecalc import CalVarSolver
+from flamecalc import BVPSolver
 from math import pi
 
 
@@ -14,7 +14,7 @@ if __name__ == '__main__':
     A = (0, 0)
     B = (pi, -2)
     domain = torch.linspace(A[0], B[0], 20000)
-    model = CalVarSolver(f, A, B, domain)
+    model = BVPSolver(f, A, B, domain)
 
     initial_theta = [-1.0] + [0] * 20
     theta = torch.tensor([initial_theta], requires_grad=True).float()

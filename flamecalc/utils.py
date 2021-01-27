@@ -45,3 +45,26 @@ def cos_matrix(m: int, xs: torch.Tensor) -> torch.Tensor:
         w = n * np.pi / L
         fourier.append(w * np.cos(w * (xs - xs[0])))
     return torch.tensor(fourier, requires_grad=False)
+
+
+def v0(y_0: Tuple[int, int], dy_0: Tuple[int, int],
+       xs: torch.Tensor) -> torch.Tensor:
+    xs = xs.numpy()
+    ys = y_0 + dy_0 * (xs - xs[0])
+    return torch.tensor(ys, requires_grad=False)
+
+
+def taylor_matrix(m: int, xs: torch.Tensor) -> torch.Tensor:
+    xs = xs.numpy()
+    taylor = []
+    for n in range(2, m + 2):
+        taylor.append((xs - xs[0])**n)
+    return torch.tensor(taylor, requires_grad=False)
+
+
+def taylor_matrix_diff(m: int, xs: torch.Tensor) -> torch.Tensor:
+    xs = xs.numpy()
+    taylor = []
+    for n in range(2, m + 2):
+        taylor.append(n * ((xs - xs[0]) ** (n - 1)))
+    return torch.tensor(taylor, requires_grad=False)
