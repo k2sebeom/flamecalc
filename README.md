@@ -1,5 +1,4 @@
 # FlameCalc
-
 FlameCalc is a machine learning approach to a boundary problem of Calculus of Variation.
 
 FlameCalc is built using PyTorch library, so please make sure the torch is installed on your device before installing
@@ -12,6 +11,8 @@ calculus of variation is finding a path between two points on a 2-dimensional sp
 are highly analogous to machine learning problems as the aim of both problem is to find a function 
 that minimizes some value. Therefore, this package aims to solve such optimization problems using machine learning techniques.
 
+![Screenshot](img/line_epoch.png)
+
 ### Installation
 ```
 $ pip install flamecalc
@@ -19,7 +20,7 @@ $ pip install flamecalc
 
 ### Usage
 
-Suppose you want to find a curve that connects two points on a 2-dimensional space.
+Suppose you want to find a shortest curve that connects two points on a 2-dimensional space.
 
 Then, we can provide a functional such that
 
@@ -46,3 +47,7 @@ result = model.optimize(lr=0.02, epoch=epoch) # Optimize
 ```
 
 With this simple code, you can solve the calculus of variation problem given with boundary conditions.
+
+The curve evolves to a straight line as the learning progresses.
+
+![Screenshot](img/line_evolve.gif)
