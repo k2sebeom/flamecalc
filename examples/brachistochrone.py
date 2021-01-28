@@ -4,6 +4,7 @@ import matplotlib.pyplot as plt
 
 from flamecalc import CalVarSolver
 from math import pi
+import numpy as np
 
 
 def f(y, dy, x):
@@ -34,9 +35,18 @@ if __name__ == '__main__':
         optimizer.step()
         losses.append(loss.detach().numpy()[0])
         if i % 50 == 0:
-            plt.plot(domain, ys.detach().numpy()[0])
+            plt.plot(domain, ys.detach().numpy()[0], label=f'Epoch {i + 1}')
+    plt.xlabel("x")
+    plt.ylabel("y")
+    plt.legend()
     plt.show()
-    plt.plot(domain, ys.detach().numpy()[0])
+
+    phi = np.linspace(0, pi)
+    x = phi - np.sin(phi)
+    y = -1 + np.cos(phi)
+    plt.plot(x, y, label='cycloid')
+    plt.plot(domain, ys.detach().numpy()[0], label='numerical')
+    plt.legend()
     plt.xlabel("x")
     plt.ylabel("y")
     plt.show()
